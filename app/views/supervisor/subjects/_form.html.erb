@@ -1,14 +1,31 @@
 <%= form_for [:supervisor, @subject] do |f| %>
   <%= render "shared/error_messages", object: @subject %>
-    <div>
-      <%= f.hidden_field :status, value: t(:label, label: "start") %>
-    </div>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control" %>
 
       <%= f.label :Instruction %>
       <%= f.text_area :description, class: "form-control" %>
+      <div class="container-fluid">
+        <%= f.label :status %>
+        <div class="row">
+          <div class="col-md-1"> 
+            <%= f.label :status, t(:label, label: "Start"), 
+                        value: true, checked: true %>
+          </div>
+          <div class="col-md-1"> 
+            <%= f.radio_button :status, t(:label, label: "Start") %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-1">
+            <%= f.label :status, t(:label, label: "Finish"), value: false %>
+          </div>
+          <div class="col-md-1">
+            <%= f.radio_button :status, t(:label, label: "Finish") %>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="form-area">
       <h3>Tasks</h3>
